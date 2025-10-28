@@ -1,0 +1,2 @@
+a = input('write the magic letter/letters here to reveal a secret number: ')
+print(ord('a' or 'b' or 'c' or 'd' or 'e' or 'f' or 'i' or 'j' or 'k' or 'l' or 'm' or 'n' or 'o' or 'p' or 'q' or 'r' or 's' or 't' or 'u' or 'v' or 'w' or 'x' or 'y' or 'z' or 'aa' or 'bb'))
