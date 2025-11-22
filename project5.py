@@ -1,10 +1,9 @@
-a = 5
-b = 6
-c = 7
+
+a = 6
+b = 7
+c = 0
+temp = a
 a = b
 b = c
-c = b
-b = a
-c = c
-a = b
-print (a, b, c)
+c = temp
+print(a,b,c)
