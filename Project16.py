@@ -1,9 +1,10 @@
-year = int(input("Enter a year: "))
-age = 2025 - year
+try:
+    age = int(input("Enter your age in 2026: "))
 
-print('\nYou are ' , age , ' years old in 2025.')
-if age % 2 == 0:
-    print('The age ' , age , ' is even.')
-else:
-    print('The age ' , age , ' is odd.')
-
+    print('\nYou are ' , age , ' years old in 2026.')
+    if age % 2 == 0:
+        print('The age ' , age , ' is even.')
+    else:
+        print('The age ' , age , ' is odd.')
+except ValueError:
+    print("Please enter a valid age.")  
