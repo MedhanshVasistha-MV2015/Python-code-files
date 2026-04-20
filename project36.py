@@ -4,7 +4,10 @@ one whenever the sprites collide.'''
 import pygame
 import random
 pygame.init()
+bg = pygame.image.load('bg.jpg')
+bg = pygame.transform.scale(bg, (500, 400))
 screen = pygame.display.set_mode((500,400))
+screen.blit(bg, (0, 0))
 player = pygame.Surface((50, 50))
 player.fill((0, 255, 0))
 player_rect = player.get_rect()
@@ -18,6 +21,7 @@ for _ in range(7):
     enemies.append((enemy, enemy_rect))
 score = 0
 font = pygame.font.SysFont('freesansbold', 32)
+clock = pygame.time.Clock()
 done = False
 while not done:
     for event in pygame.event.get():
@@ -35,20 +39,20 @@ while not done:
     for enemy, enemy_rect in enemies:
         enemy_rect.x += random.randint(-3, 3)
         enemy_rect.y += random.randint(-3, 3)
-        # Keep enemies on screen
         if enemy_rect.left < 0:
             enemy_rect.left = 0
-        if enemy_rect.right > 900:
-            enemy_rect.right = 900
+        if enemy_rect.right > 500:
+            enemy_rect.right = 500
         if enemy_rect.top < 0:
             enemy_rect.top = 0
-        if enemy_rect.bottom > 800:
-            enemy_rect.bottom = 800
+        if enemy_rect.bottom > 400:
+            enemy_rect.bottom = 400
     for enemy, enemy_rect in enemies:
         if player_rect.colliderect(enemy_rect):
             score += 1
-            enemy_rect.topleft = (random.randint(0, 850), random.randint(0, 750))
-    screen.fill((35, 42, 56))
+            enemy_rect.topleft = (random.randint(0, 450), random.randint(0, 350))
+    screen.blit(player, player_rect)
+    screen.blit(bg, (0, 0))
     screen.blit(player, player_rect)
     for enemy, enemy_rect in enemies:
         screen.blit(enemy, enemy_rect)
@@ -58,4 +62,5 @@ while not done:
         win_text = font.render('You Win!', True, (255, 255, 0))
         screen.blit(win_text, (200, 200))
     pygame.display.flip()
+    clock.tick(60)
 pygame.quit()
